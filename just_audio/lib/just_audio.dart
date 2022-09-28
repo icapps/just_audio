@@ -734,9 +734,11 @@ class AudioPlayer {
     _audioSource = null;
     _initialSeekValues =
         _InitialSeekValues(position: initialPosition, index: initialIndex);
-    _playbackEventSubject.add(_playbackEvent = PlaybackEvent(
-        currentIndex: initialIndex ?? 0,
-        updatePosition: initialPosition ?? Duration.zero));
+    _playbackEventSubject
+      ..add(PlaybackEvent())
+      ..add(_playbackEvent = PlaybackEvent(
+          currentIndex: initialIndex ?? 0,
+          updatePosition: initialPosition ?? Duration.zero));
     _audioSource = source;
     _broadcastSequence();
     Duration? duration;
